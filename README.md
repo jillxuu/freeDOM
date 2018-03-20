@@ -35,13 +35,11 @@ Returns a `DOMNodeCollection` of all the nodes that match the argument that are 
 
 Returns a `DOMNodeCollection` of all children of all nodes within the `DOMNodeCollection`.  
 
-`$l(".class").children()`
 
 **`#parent()`**  
 
 Returns a `DOMNodeCollection` of the parent of all nodes within the `DOMNodeCollection`.  
 
-`$l(".class").parent()`. 
   
 **`#remove()`**
 
@@ -53,12 +51,6 @@ Removes the element from the DOM.
 
 Installs an 'action' event handler. When triggered runs the cb callback.
 
-`$l(".class").on("click", () => {
-  const res = $l(".anotherClass")
-  res.removeClass("anotherClass")
-  res.addClass("thirdClass");
-});`
-
 
 **`#off(action)`** 
 
@@ -69,19 +61,16 @@ Removes the 'action' listener from the DOM
 **`#addClass(className)`**
 
 Adds a class attritube to all nodes within the `DOMNodeCollection`.  
-`node.addClass("className");`
 
 **`#removeClass(className)`**
 
 Remove a class attritube of all nodes within the `DOMNodeCollection`.  
-`node.removeClass("className");`
 
 **`#append(arg)`**
 
 arg can be a string, HTMLElement, or `DOMNodeCollection` object
 Appends the outerHTML of each element in the argument to the innerHTML of ALL nodes within the `DOMNodeCollection`.
-`node.append(${newStuff});`
-`newNode.append(something);` where subButton is an instance of `DOMNodeCollection`
+
 
 **`#empty()`**
 

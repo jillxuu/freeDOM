@@ -76,6 +76,10 @@ class DOMNodeCollection {
     return new DOMNodeCollection(parentNode);
   }
 
+  toggleClass(toggleClass) {
+    this.each(node => node.classList.toggle(toggleClass));
+  }
+
   find(selector){
     let res = [];
     if (this.children().length === 0) {

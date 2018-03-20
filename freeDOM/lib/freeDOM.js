@@ -1,39 +1,31 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
+/******/ (function(modules) {
 /******/ 	var installedModules = {};
 /******/
-/******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/
-/******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId]) {
 /******/ 			return installedModules[moduleId].exports;
 /******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
 /******/
-/******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/
-/******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
 /******/
-/******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
 /******/
 /******/
-/******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
 /******/
-/******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
 /******/
-/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
 /******/ 			Object.defineProperty(exports, name, {
@@ -44,7 +36,6 @@
 /******/ 		}
 /******/ 	};
 /******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
 /******/ 			function getDefault() { return module['default']; } :
@@ -53,13 +44,10 @@
 /******/ 		return getter;
 /******/ 	};
 /******/
-/******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
-/******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "";
 /******/
-/******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
@@ -68,35 +56,30 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 const DOMNodeCollection = __webpack_require__(1);
-
+const Test = __webpack_require__(2);
+// ".class_name"
+// <div class="class_name" ></div>
 
 function $l(selector){
   if (selector instanceof HTMLElement) {
-    let htmlEls = [selector];
-    return new DOMNodeCollection(htmlEls);
+    let els = [selector];
+    return new DOMNodeCollection(els);
   } else if (typeof selector === 'function'){
     document.addEventListener('DOMContentLoaded', selector);
-  } else{
+  }
+  else{
     const el = document.querySelectorAll(selector);
     let els = Array.from(el);
     return new DOMNodeCollection(els);
   }
 }
 
-
 $l.extend = function (...objects) {
   return Object.assign({}, ...objects);
 };
 
 $l.ajax = function(obj) {
-  const defaults = {
-    'success': (e) => {console.log(e);},
-    'contentType': 'application/x-www-form-urlencoded; charset=UTF-8',
-    'method': 'GET',
-    'data':  '',
-    'url': '/',
-    'error': (e) => {console.log(e);}
-  };
+  const defaults = {'success': (e) => {console.log(e);}, 'contentType': 'application/x-www-form-urlencoded; charset=UTF-8', 'method': 'GET', 'data':  '', 'url': '/', 'error': (e) => {console.log(e);}};
   const options = $l.extend(defaults, obj);
   const xhr = new XMLHttpRequest();
 
@@ -115,13 +98,22 @@ $l.ajax = function(obj) {
 };
 
 
+window.$l = $l;
+
+$l( () => {
+  $l.ajax({url: "https://jsonplaceholder.typicode.com/posts"});
+
+});
+
+
+
 /***/ }),
 /* 1 */
 /***/ (function(module, exports) {
 
 class DOMNodeCollection {
-  constructor(htmlEl) {
-    this.nodes = htmlEl;
+  constructor(arr) {
+    this.nodes = arr;
     this.returnSelf();
   }
 
@@ -143,6 +135,7 @@ class DOMNodeCollection {
     this.html('');
   }
 
+
   append(arg){
     if (arg instanceof DOMNodeCollection){
       for (let i = 0; i < this.nodes.length; i++) {
@@ -162,46 +155,52 @@ class DOMNodeCollection {
   }
 
   attr(name, value) {
-      this.nodes.forEach(node => {
-        node.setAttribute(name, value);
-      });
-    }
-
-  addClass(className) {
     this.nodes.forEach(node => {
-      node.classList.add(className);
+      node.setAttribute(name, value);
     });
   }
 
-  removeClass(className) {
+  addClass(class_name) {
     this.nodes.forEach(node => {
-      node.classList.remove(className);
+      node.classList.add(class_name);
+    });
+  }
+
+  removeClass(class_name) {
+    this.nodes.forEach(node => {
+      node.classList.remove(class_name);
     });
   }
 
   children() {
-    let childrenNodes = [];
+    let res = [];
     for (var i = 0; i < this.nodes.length; i++) {
       for (var j = 0; j < this.nodes[i].children.length; j++) {
-        childrenNodes.push(this.nodes[i].children[j]);
+        res.push(this.nodes[i].children[j]);
       }
     }
-    return new DOMNodeCollection(childrenNodes);
+    return new DOMNodeCollection(res);
   }
 
   parent() {
-    let parentNode = [];
+    let res = [];
     for (var i = 0; i < this.nodes.length; i++) {
-      parentNode.push(this.nodes[i].parentNode);
+      res.push(this.nodes[i].parentNode);
     }
-    return new DOMNodeCollection(parentNode);
+    return new DOMNodeCollection(res);
   }
 
+  // toggleClass(toggleClass) {
+  //   this.each(node => node.classList.toggle(toggleClass));
+  // }
+  //
   find(selector){
     let res = [];
+
     if (this.children().length === 0) {
       return undefined;
     }
+
     this.nodes.forEach((el) => {
       res.push(el.querySelectorAll(selector));
     });
@@ -228,8 +227,30 @@ class DOMNodeCollection {
   }
 }
 
+
 module.exports = DOMNodeCollection;
 
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+const DOMNodeCollection = __webpack_require__(1);
+
+class Test {
+  constructor() {
+
+  }
+  run(){
+    const test = $l('p');
+    test.on('click', () => console.log("It's working!"));
+
+    setTimeout(() => test.off('click'), 5000);
+
+
+  }
+}
+
+module.exports = Test;
 
 /***/ })
 /******/ ]);

@@ -1,5 +1,5 @@
-const DOMNodeCollection = require('./dom_node_collection.js');
 
+const DOMNodeCollection = require('./dom_node_collection.js');
 
 function $l(selector){
   if (selector instanceof HTMLElement) {

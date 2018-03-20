@@ -65,8 +65,41 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+window.$l = $l;
+const DOMNodeCollection = __webpack_require__(1);
+
+
+function $l(selector){
+  if (selector instanceof HTMLElement) {
+    let htmlEls = [selector];
+    return new DOMNodeCollection(htmlEls);
+  } else if (typeof selector === 'function'){
+    document.addEventListener('DOMContentLoaded', selector);
+  } else{
+    const el = document.querySelectorAll(selector);
+    let els = Array.from(el);
+    return new DOMNodeCollection(els);
+  }
+}
+
+
+/***/ }),
+/* 1 */
 /***/ (function(module, exports) {
 
+class DOMNodeCollection {
+  constructor(htmlEl) {
+    this.nodes = htmlEl;
+    this.returnSelf();
+  }
+
+  returnSelf() {
+    return this;
+  }
+
+}
 
 
 /***/ })

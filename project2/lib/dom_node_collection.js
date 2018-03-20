@@ -92,4 +92,17 @@ class DOMNodeCollection {
       el.parentNode.removeChild(el);
     });
   }
+
+  on(type, callback) {
+    this.nodes.forEach((el) => {
+      el.addEventListener(type, callback);
+      el.callback = callback;
+    });
+  }
+
+  off(type) {
+    this.nodes.forEach((el) => {
+      el.removeEventListener(type, el.callback);
+    });
+  }
 }

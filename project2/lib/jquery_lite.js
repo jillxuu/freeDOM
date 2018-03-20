@@ -167,7 +167,22 @@ class DOMNodeCollection {
     return new DOMNodeCollection(parentNode);
   }
 
-  
+  find(selector){
+    let res = [];
+    if (this.children().length === 0) {
+      return undefined;
+    }
+    this.nodes.forEach((el) => {
+      res.push(el.querySelectorAll(selector));
+    });
+    return new DOMNodeCollection(res);
+  }
+
+  remove() {
+    this.nodes.forEach((el) => {
+      el.parentNode.removeChild(el);
+    });
+  }
 }
 
 

@@ -148,6 +148,26 @@ class DOMNodeCollection {
       node.classList.remove(className);
     });
   }
+
+  children() {
+    let childrenNodes = [];
+    for (var i = 0; i < this.nodes.length; i++) {
+      for (var j = 0; j < this.nodes[i].children.length; j++) {
+        childrenNodes.push(this.nodes[i].children[j]);
+      }
+    }
+    return new DOMNodeCollection(childrenNodes);
+  }
+
+  parent() {
+    let parentNode = [];
+    for (var i = 0; i < this.nodes.length; i++) {
+      parentNode.push(this.nodes[i].parentNode);
+    }
+    return new DOMNodeCollection(parentNode);
+  }
+
+  
 }
 
 

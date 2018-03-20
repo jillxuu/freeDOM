@@ -131,7 +131,23 @@ class DOMNodeCollection {
     }
   }
 
+  attr(name, value) {
+      this.nodes.forEach(node => {
+        node.setAttribute(name, value);
+      });
+    }
 
+  addClass(className) {
+    this.nodes.forEach(node => {
+      node.classList.add(className);
+    });
+  }
+
+  removeClass(className) {
+    this.nodes.forEach(node => {
+      node.classList.remove(className);
+    });
+  }
 }
 
 

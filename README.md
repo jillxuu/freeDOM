@@ -3,7 +3,7 @@
 A JavaScript DOM Manipulation Library 
 
 ## Description
-DOMquery is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript. 
+freeDOM is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript. 
 Functionalities include:
 
 * Hold DOM nodes and offer convenient methods for traversal and manipulation, like empty, remove, attr, addClass, removeClass, html, find, children, and parent

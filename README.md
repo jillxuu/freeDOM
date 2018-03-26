@@ -3,7 +3,7 @@
 A JavaScript DOM Manipulation Library 
 
 ## Description
-DOMquery is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript. 
+freeDOM is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript. 
 Functionalities include:
 
 * Hold DOM nodes and offer convenient methods for traversal and manipulation, like empty, remove, attr, addClass, removeClass, html, find, children, and parent
@@ -35,13 +35,11 @@ Returns a `DOMNodeCollection` of all the nodes that match the argument that are 
 
 Returns a `DOMNodeCollection` of all children of all nodes within the `DOMNodeCollection`.  
 
-`$l(".class").children()`
 
 **`#parent()`**  
 
 Returns a `DOMNodeCollection` of the parent of all nodes within the `DOMNodeCollection`.  
 
-`$l(".class").parent()`. 
   
 **`#remove()`**
 
@@ -53,12 +51,6 @@ Removes the element from the DOM.
 
 Installs an 'action' event handler. When triggered runs the cb callback.
 
-`$l(".class").on("click", () => {
-  const res = $l(".anotherClass")
-  res.removeClass("anotherClass")
-  res.addClass("thirdClass");
-});`
-
 
 **`#off(action)`** 
 
@@ -69,19 +61,16 @@ Removes the 'action' listener from the DOM
 **`#addClass(className)`**
 
 Adds a class attritube to all nodes within the `DOMNodeCollection`.  
-`node.addClass("className");`
 
 **`#removeClass(className)`**
 
 Remove a class attritube of all nodes within the `DOMNodeCollection`.  
-`node.removeClass("className");`
 
 **`#append(arg)`**
 
 arg can be a string, HTMLElement, or `DOMNodeCollection` object
 Appends the outerHTML of each element in the argument to the innerHTML of ALL nodes within the `DOMNodeCollection`.
-`node.append(${newStuff});`
-`newNode.append(something);` where subButton is an instance of `DOMNodeCollection`
+
 
 **`#empty()`**
 

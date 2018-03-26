@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>freeDOM</title>
+    <script type="text/javascript" src="./lib/freeDOM.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1>todo list</h1>
+    <form action="index.html" method="post">
+      <input type="text" class="input" placeholder="todo">
+      <input type="submit" class="submit" value="Add">
+    </form>
+    <ol class="todo-list"></ol>
+
+    <script type="text/javascript">
+      const addTodo = () => {
+        $l(".submit").on("click", e => {
+          e.preventDefault();
+          const value = document.querySelector('.input').value;
+          if (value) {
+            $l('.todo-list').append(
+              `<li class="list-item">
+                <span class="item">${value}</span>
+                <button class="delete">delete</button>
+              </li>`);
+          }
+          document.querySelector('.input').value = "";
+        });
+      }
+      const removeTodo = () => {
+        $l(".todo-list").on("click", e => {
+          if ($l(e.target).attr("class") === "delete") {
+            $l(e.target).parent().remove();
+          }
+        });
+      }
+      addTodo();
+      removeTodo();
+    </script>
+  </body>
+</html>

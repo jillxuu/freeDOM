@@ -18,33 +18,45 @@ class DOMNodeCollection {
     }
   }
 
+  val(newVal){
+    if (newVal !== undefined){
+      for (let i = 0; i < this.nodes.length; i++){
+        this.nodes[i].value = newVal;
+      }
+    } else {
+      for (let i = 0; i < this.nodes.length; i++){
+        return this.nodes[i].value;
+      }
+    }
+  }
+
   empty(){
     this.html('');
   }
 
   append(arg){
-    if (arg instanceof DOMNodeCollection){
-      for (let i = 0; i < this.nodes.length; i++) {
-        for (let j = 0; j < arg.nodes.length; j++) {
-          this.nodes[i].appendChild(arg.nodes[j]);
-        }
-      }
-    } else if (arg instanceof HTMLElement) {
-      for (let i = 0; i < this.nodes.length; i++) {
-        this.nodes[i].appendChild(arg);
-      }
-    } else {
-      for (let i = 0; i < this.nodes.length; i++) {
-        this.nodes[i].innerHTML = arg;
-      }
+    if (this.nodes.length === 0) return;
+
+    if (typeof arg === "string") {
+      this.nodes.forEach( (node) => {
+        node.innerHTML += arg;
+      });
+    } else if (arg instanceof DOMNodeCollection) {
+      this.nodes.forEach( (node) => {
+        arg.nodes.forEach( (argNode) => {
+          node.appendChild(argNode.cloneNode(true));
+        });
+      });
     }
   }
 
   attr(name, value) {
-      this.nodes.forEach(node => {
-        node.setAttribute(name, value);
-      });
+    if (typeof value === "string") {
+      this.nodes.forEach(node => node.setAttribute(name, value));
+    } else {
+      return this.nodes[0].getAttribute(name);
     }
+  }
 
   addClass(className) {
     this.nodes.forEach(node => {

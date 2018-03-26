@@ -44,3 +44,5 @@ $l.ajax = function(obj) {
   const optionalData = options.data;
   xhr.send(optionalData);
 };
+
+window.$l = $l;

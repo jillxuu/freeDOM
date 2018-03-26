@@ -1,6 +1,7 @@
 # freeDOM
 
-A JavaScript DOM Manipulation Library 
+A JavaScript DOM Manipulation Library  
+### [Live](http://dongjinxu.com/freeDOM/)
 
 ## Description
 DOMquery is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript. 

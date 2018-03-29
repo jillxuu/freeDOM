@@ -7,12 +7,12 @@
   </head>
   <body>
     <img class="todolist" src="./images/todolist.png"/>
-    <form action="index.html" method="post" class="total">
+    <form action="index.html" method="post" class="header">
       <input type="text" class="input" placeholder="todo">
       <button class="submit">Add</button>
       <!-- <input type="submit" class="submit" value="Add"> -->
     </form>
-    <ol class="todo-list"></ol>
+    <ul class="todo-list"></ul>
 
     <script type="text/javascript">
       const addTodo = () => {
@@ -23,7 +23,7 @@
             $l('.todo-list').append(
               `<li class="listitem">
                 <span class="item">${value}</span>
-                <button class="delete">delete</button>
+                <button class="delete">X</button>
               </li>`);
           }
           document.querySelector('.input').value = "";

@@ -1,52 +1,129 @@
-body{
-  height: 1000px;
+/* PHASE 0: Reset */
 
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  /* box-sizing: inherit; */
+  background: transparent;
 }
 
-.todolist{
+ul {
+  list-style: none;
+}
+
+img {
+  /* display: block; */
+  /* width: 50%; */
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+  /* height: auto; */
 }
 
-.total{
-  margin-left:auto;
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 12px;
+  width: 50%;
+  margin-left: auto;
   margin-right: auto;
+  background: #eee;
+  font-size: 18px;
+  transition: 0.2s;
+
+  /* make the list items unselectable */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  list-style-type: none;
 }
 
-.input{
-  font-size: 30px;
-  border-radius:5px;
+ul li:nth-child(odd) {
+  background: #f9f9f9;
+}
+
+.header {
+  background-color: gray;
+  padding: 30px 40px;
+  color: white;
+  text-align: center;
+}
+
+.header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input {
+  border: none;
+  width: 75%;
+  padding: 10px;
+  float: left;
+  font-size: 16px;
 }
 
 .submit{
-  width:50px;
-  height:30px;
-  border-radius:5px;
+  padding: 8px;
+  width: 25%;
+  background: #d9d9d9;
+  color: #555;
+  float: left;
+  text-align: center;
+  font-size: 17px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-.listitem{
-
+.submit:hover {
+  background-color: #bbb;
 }
 
-.item{
-
-}
-
-.delete{
-
-}
-
-footer{
-  display: flex;
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  list-style-type: none;
+.delete {
   position: absolute;
-  bottom: 0;
-  height: 20px;
-  margin: 0 auto;
+  right: 0;
+  top: 0;
+  padding: 12px 16px 12px 16px;
+}
+
+.delete:hover {
+  background-color: #f44336;
+  color: white;
 }
 
 .fa-github{

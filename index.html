@@ -3,12 +3,14 @@
   <head>
     <title>freeDOM</title>
     <script type="text/javascript" src="./lib/freeDOM.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h1>todo list</h1>
-    <form action="index.html" method="post">
+    <img class="todolist" src="./images/todolist.png"/>
+    <form action="index.html" method="post" class="total">
       <input type="text" class="input" placeholder="todo">
-      <input type="submit" class="submit" value="Add">
+      <button class="submit">Add</button>
+      <!-- <input type="submit" class="submit" value="Add"> -->
     </form>
     <ol class="todo-list"></ol>
 
@@ -19,7 +21,7 @@
           const value = document.querySelector('.input').value;
           if (value) {
             $l('.todo-list').append(
-              `<li class="list-item">
+              `<li class="listitem">
                 <span class="item">${value}</span>
                 <button class="delete">delete</button>
               </li>`);
@@ -38,4 +40,9 @@
       removeTodo();
     </script>
   </body>
+
+  <footer>
+    <li><a href="https://github.com/dongjinxujill/freeDOM" class="icon alt fa-github"><span class="label">GitHub</span></a></li>
+		<li><a href="https://www.linkedin.com/in/dongjinxu" class="icon alt fa-linkedin"><span class="label">LinkedIn</span></a></li>
+  </footer>
 </html>

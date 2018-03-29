@@ -1,0 +1,59 @@
+body{
+  height: 1000px;
+
+}
+
+.todolist{
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.total{
+  margin-left:auto;
+  margin-right: auto;
+}
+
+.input{
+  font-size: 30px;
+  border-radius:5px;
+}
+
+.submit{
+  width:50px;
+  height:30px;
+  border-radius:5px;
+}
+
+.listitem{
+
+}
+
+.item{
+
+}
+
+.delete{
+
+}
+
+footer{
+  display: flex;
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  list-style-type: none;
+  position: absolute;
+  bottom: 0;
+  height: 20px;
+  margin: 0 auto;
+}
+
+.fa-github{
+  list-style-type: none;
+  text-decoration: none;
+}
+.fa-linkedin{
+  list-style-type: none;
+  text-decoration: none;
+}

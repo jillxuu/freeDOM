@@ -4,7 +4,7 @@ A JavaScript DOM Manipulation Library
 ### [Live](http://dongjinxu.com/freeDOM/)
 
 ## Description
-FreeDOM is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript. 
+FreeDOM is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, and guaranteeing it works across browsers inspired by jQuery and written in vanilla JavaScript.
 Functionalities include:
 
 * Hold DOM nodes and offer convenient methods for traversal and manipulation, like empty, remove, attr, addClass, removeClass, html, find, children, and parent
@@ -52,14 +52,15 @@ Removes the element from the DOM.
 
 **`#on(action,callback)`**
 
-Installs an 'action' event handler. When triggered runs the cb callback.
+Installs an 'action' event handler. When triggered runs the callback.
 
-`$l(".class").on("click", () => {
-  const res = $l(".anotherClass")
-  res.removeClass("anotherClass")
-  res.addClass("thirdClass");
-});`
-
+$l(".submit").on("click", e => {
+  e.preventDefault();
+  const value = document.querySelector('.input').value;
+  if (value) {
+    $l('.todo-list').append();
+  }
+}
 
 **`#off(action)`**
 
@@ -93,3 +94,7 @@ Clears the content from all nodes within the `DOMNodeCollection`.
 Accepts a key and optional value.
 If the value exists, it will add that value and key to all nodes within the `DOMNodeCollection`.
 If there is no value, it will return the value corresponding for the key of the first node.
+
+if ($l(e.target).attr("class") === "delete") {
+  $l(e.target).parent().remove();
+}

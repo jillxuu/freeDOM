@@ -5,6 +5,7 @@ A JavaScript DOM Manipulation Library
 
 ## Description
 FreeDOM is a DOM Manipulation library for making AJAX requests, handling events, manipulating the DOM, inspired by jQuery and written in vanilla JavaScript.
+
 Functionalities include:
 
 * Hold DOM nodes and offer convenient methods for traversal and manipulation, like empty, remove, attr, addClass, removeClass, html, find, children, and parent
@@ -23,7 +24,7 @@ Functionalities include:
 The $l wrapper has three main uses:
 * Creates a new `DOMNodeCollection` object, ex: `$l("<li>")`
 * Takes an HTMLElement and wraps it to return an `DOMNodeCollection` object
-* Selects elements via tags, css selectors or id, `$l(".class") or $l("#id")`
+* Selects elements via tags, css selectors or id, ex: `$l(".class") or $l("#id")`
 
 ### DOM Traversal
 
